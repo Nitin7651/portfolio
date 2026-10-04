@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, ExternalLink, ArrowRight, Code, Award, Briefcase, BookOpen } from 'lucide-react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Mail, MapPin, ExternalLink, ArrowRight, Code, Award, Briefcase, BookOpen, Quote, Download, Globe, Cpu, Database, Cloud, Layers, MessageCircle, FileText, Send } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaJava, FaDocker, FaAws, FaNodeJs, FaPython, FaGit } from 'react-icons/fa';
+import { SiSpringboot, SiPostgresql, SiMongodb, SiRedis, SiApachekafka, SiHuggingface } from 'react-icons/si';
 import heroImage from './assets/Thoughtful Workspace Portrait.png';
 
 const fadeIn = {
@@ -18,10 +19,22 @@ const staggerContainer = {
 };
 
 const Navbar = () => (
-  <nav className="fixed w-full bg-cream-50/90 backdrop-blur-md z-50 py-5 border-b border-cream-200">
+  <nav className="fixed w-full bg-cream-50/90 backdrop-blur-md z-50 py-4 border-b border-cream-200">
     <div className="max-w-7xl mx-auto px-6 md:px-16 flex justify-between items-center">
       <span className="font-serif font-bold text-xl tracking-widest uppercase text-ink-900">Nitin.</span>
-      <div className="flex gap-6 items-center">
+      {/* Nav links - hidden on mobile */}
+      <div className="hidden md:flex gap-8 items-center">
+        {['About', 'Skills', 'Experience', 'Projects', 'Services', 'Contact'].map((link) => (
+          <a
+            key={link}
+            href={`#${link.toLowerCase()}`}
+            className="text-xs font-bold tracking-[0.2em] uppercase text-ink-900/50 hover:text-cream-700 transition-colors duration-200"
+          >
+            {link}
+          </a>
+        ))}
+      </div>
+      <div className="flex gap-4 items-center">
         <a href="https://github.com/Nitin7651" target="_blank" rel="noopener noreferrer" className="text-ink-900/60 hover:text-cream-700 transition-colors duration-200">
           <FaGithub size={20} />
         </a>
@@ -30,6 +43,15 @@ const Navbar = () => (
         </a>
         <a href="mailto:shivadwivedi7651@gmail.com" className="text-ink-900/60 hover:text-cream-700 transition-colors duration-200">
           <Mail size={20} />
+        </a>
+        {/* Resume Download Button */}
+        <a
+          href="https://drive.google.com/file/d/1ptL8XbuFxSpyIP1pbY2-C8fbXYBJMyHu/view"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase border border-cream-700 text-cream-700 hover:bg-cream-700 hover:text-white transition-all duration-300"
+        >
+          <Download size={12} /> Resume
         </a>
       </div>
     </div>
@@ -66,7 +88,7 @@ const Hero = () => (
 
         {/* Cursive subtitle */}
         <motion.p variants={fadeIn} className="font-cursive text-3xl md:text-4xl text-cream-700 mb-4 lowercase leading-tight">
-          creative &amp; professional
+          Creative &amp; Professional
         </motion.p>
 
         {/* Main name */}
@@ -84,14 +106,15 @@ const Hero = () => (
 
         {/* CTAs */}
         <motion.div variants={fadeIn} className="flex flex-wrap gap-4 items-center">
-          <a href="mailto:shivadwivedi7651@gmail.com"
+          <a href="#contact"
             className="inline-flex items-center gap-2 px-7 py-3 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:opacity-90"
             style={{ background: 'linear-gradient(135deg, #b0763f, #d39850)', color: '#fff' }}>
             Get In Touch <ArrowRight size={14} />
           </a>
-          <a href="https://github.com/Nitin7651" target="_blank" rel="noopener noreferrer"
+          <a href="https://drive.google.com/file/d/1ptL8XbuFxSpyIP1pbY2-C8fbXYBJMyHu/view"
+            target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3 text-xs font-bold tracking-[0.2em] uppercase border border-ink-900/20 text-ink-900/70 hover:border-cream-700 hover:text-cream-700 transition-all duration-300">
-            <FaGithub size={14} /> GitHub
+            <Download size={14} /> Download CV
           </a>
         </motion.div>
 
@@ -170,7 +193,7 @@ const Hero = () => (
 );
 
 const AboutStats = () => (
-  <section className="py-24 bg-white">
+  <section id="about" className="py-24 bg-white">
     <div className="max-w-6xl mx-auto px-6 md:px-12">
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="grid md:grid-cols-2 gap-16 items-center">
         <motion.div variants={fadeIn}>
@@ -205,7 +228,7 @@ const AboutStats = () => (
 );
 
 const VisionSkills = () => (
-  <section className="py-24 bg-cream-100">
+  <section id="skills" className="py-24 bg-cream-100">
     <div className="max-w-6xl mx-auto px-6 md:px-12">
 
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="text-center max-w-3xl mx-auto mb-24">
@@ -254,7 +277,7 @@ const VisionSkills = () => (
 );
 
 const Experience = () => (
-  <section className="py-24 bg-white">
+  <section id="experience" className="py-24 bg-white">
     <div className="max-w-4xl mx-auto px-6 md:px-12">
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
         <motion.p variants={fadeIn} className="font-cursive text-4xl text-cream-700 mb-2 text-center lowercase">work</motion.p>
@@ -311,7 +334,7 @@ const Experience = () => (
 );
 
 const Projects = () => (
-  <section className="py-24 bg-cream-50">
+  <section id="projects" className="py-24 bg-cream-50">
     <div className="max-w-6xl mx-auto px-6 md:px-12">
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
         <motion.p variants={fadeIn} className="font-cursive text-4xl text-cream-700 mb-2 text-center lowercase">project</motion.p>
@@ -378,6 +401,284 @@ const Education = () => (
   </section>
 );
 
+/* ─────────────────────────────────────────
+   TECH STACK VISUAL GRID
+───────────────────────────────────────── */
+const techStack = [
+  { icon: FaJava, label: 'Java', color: '#E76F00' },
+  { icon: SiSpringboot, label: 'Spring Boot', color: '#6DB33F' },
+  { icon: FaDocker, label: 'Docker', color: '#2496ED' },
+  { icon: FaAws, label: 'AWS', color: '#FF9900' },
+  { icon: SiPostgresql, label: 'PostgreSQL', color: '#4169E1' },
+  { icon: SiMongodb, label: 'MongoDB', color: '#47A248' },
+  { icon: SiRedis, label: 'Redis', color: '#DC382D' },
+  { icon: FaPython, label: 'Python', color: '#3776AB' },
+  { icon: FaNodeJs, label: 'Node.js', color: '#339933' },
+  { icon: SiApachekafka, label: 'Kafka', color: '#231F20' },
+  { icon: SiHuggingface, label: 'HuggingFace', color: '#FF9D00' },
+  { icon: FaGit, label: 'Git', color: '#F05032' },
+];
+
+const TechStack = () => (
+  <section className="py-20 bg-cream-50 border-t border-cream-200">
+    <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
+        <motion.p variants={fadeIn} className="font-cursive text-4xl text-cream-700 mb-2 text-center lowercase">tools &amp;</motion.p>
+        <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif font-black uppercase tracking-widest mb-16 text-center">Tech Stack</motion.h2>
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+          {techStack.map(({ icon: Icon, label, color }) => (
+            <motion.div
+              key={label}
+              variants={fadeIn}
+              whileHover={{ y: -6, scale: 1.05 }}
+              className="flex flex-col items-center gap-3 p-5 bg-white border border-cream-200 shadow-sm hover:shadow-md hover:border-cream-400 transition-all duration-300 cursor-default"
+            >
+              <Icon size={36} style={{ color }} />
+              <span className="text-[10px] font-bold tracking-widest uppercase text-ink-900/60">{label}</span>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);
+
+/* ─────────────────────────────────────────
+   SERVICES / WHAT I OFFER
+───────────────────────────────────────── */
+const services = [
+  {
+    icon: Layers,
+    title: 'Microservices Architecture',
+    description: 'Design and build scalable, domain-driven microservices with Spring Boot, event-driven patterns, and resilient async workflows.',
+  },
+  {
+    icon: Cpu,
+    title: 'AI & LLM Integration',
+    description: 'Integrate LLMs, RAG pipelines, vector search, and multi-agent systems using LangChain, LangGraph, Spring AI, and OpenAI.',
+  },
+  {
+    icon: Database,
+    title: 'API Design & Backend',
+    description: 'Build production-grade REST APIs with security, validation, testing, caching, and full lifecycle management.',
+  },
+  {
+    icon: Cloud,
+    title: 'Cloud & DevOps',
+    description: 'Deploy and manage cloud infrastructure on AWS with Docker, CI/CD pipelines, and observability tooling.',
+  },
+  {
+    icon: Globe,
+    title: 'Enterprise Platform Dev',
+    description: 'Build SaaS subscription platforms covering licensing, billing sync, entitlements, and audit compliance.',
+  },
+  {
+    icon: Code,
+    title: 'Performance Optimization',
+    description: 'Identify bottlenecks and optimize API response times, database queries, and system throughput.',
+  },
+];
+
+const Services = () => (
+  <section id="services" className="py-24 bg-white">
+    <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
+        <motion.p variants={fadeIn} className="font-cursive text-4xl text-cream-700 mb-2 text-center lowercase">what i</motion.p>
+        <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif font-black uppercase tracking-widest mb-16 text-center">Offer</motion.h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {services.map(({ icon: Icon, title, description }, i) => (
+            <motion.div
+              key={title}
+              variants={fadeIn}
+              custom={i}
+              whileHover={{ y: -6 }}
+              className="group p-8 border border-cream-200 bg-cream-50 hover:bg-white hover:border-cream-500 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="w-12 h-12 flex items-center justify-center mb-6 border border-cream-300 bg-white group-hover:bg-cream-700 group-hover:border-cream-700 transition-all duration-300">
+                <Icon size={22} className="text-cream-700 group-hover:text-white transition-colors duration-300" />
+              </div>
+              <h3 className="font-bold uppercase tracking-wider mb-3 text-ink-900">{title}</h3>
+              <p className="text-sm font-light leading-relaxed text-ink-900/70">{description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);
+
+/* ─────────────────────────────────────────
+   TESTIMONIALS
+───────────────────────────────────────── */
+const testimonials = [
+  {
+    quote: "Nitin consistently delivered robust backend solutions under tight deadlines. His Spring Boot expertise and ability to architect scalable microservices made him invaluable to our engineering team.",
+    name: 'Senior Engineer',
+    role: 'PSNOVA Solutions Pvt. Ltd.',
+  },
+  {
+    quote: "His understanding of AI integration and LLM-powered workflows is exceptional. Nitin brought fresh thinking to our enterprise assistant project and executed flawlessly.",
+    name: 'Tech Lead',
+    role: 'PSNOVA Solutions Pvt. Ltd.',
+  },
+  {
+    quote: "Reliable, sharp, and detail-oriented. Nitin's diagnostic assessment system was one of the cleanest implementations we've reviewed — well-structured APIs and excellent testing discipline.",
+    name: 'Engineering Manager',
+    role: 'Kodnest',
+  },
+];
+
+const Testimonials = () => (
+  <section className="py-24 bg-cream-100">
+    <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
+        <motion.p variants={fadeIn} className="font-cursive text-4xl text-cream-700 mb-2 text-center lowercase">what they</motion.p>
+        <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif font-black uppercase tracking-widest mb-16 text-center">Say</motion.h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map(({ quote, name, role }, i) => (
+            <motion.div
+              key={i}
+              variants={fadeIn}
+              whileHover={{ y: -4 }}
+              className="bg-white p-8 border border-cream-200 shadow-sm hover:shadow-md hover:border-cream-400 transition-all duration-300 relative"
+            >
+              {/* Large quote mark */}
+              <Quote size={40} className="text-cream-200 mb-4" />
+              <p className="text-base font-light leading-relaxed text-ink-900/80 mb-8 italic">"{quote}"</p>
+              <div className="border-t border-cream-200 pt-6">
+                <p className="font-bold uppercase tracking-wider text-sm text-ink-900">{name}</p>
+                <p className="text-xs text-cream-700 font-bold tracking-widest uppercase mt-1">{role}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);
+
+/* ─────────────────────────────────────────
+   BLOG / ARTICLES
+───────────────────────────────────────── */
+const articles = [
+  {
+    title: 'Building Scalable Microservices with Spring Boot & DDD',
+    summary: 'A deep dive into Domain-Driven Design principles applied to Spring Boot microservices — event sourcing, bounded contexts, and resilient async workflows.',
+    tag: 'Microservices',
+    date: 'Sep 2025',
+    href: 'https://medium.com',
+  },
+  {
+    title: 'RAG Pipelines with LangChain & Spring AI',
+    summary: 'How to build enterprise-grade Retrieval-Augmented Generation systems using vector databases, structured prompts, and guardrails for LLM safety.',
+    tag: 'AI / LLMs',
+    date: 'Aug 2025',
+    href: 'https://medium.com',
+  },
+  {
+    title: 'Optimizing REST APIs: From Milliseconds to Sub-100ms',
+    summary: 'Practical techniques I used to achieve 30% faster API responses — Redis caching, query optimization, connection pooling, and profiling strategies.',
+    tag: 'Performance',
+    date: 'Jul 2025',
+    href: 'https://medium.com',
+  },
+];
+
+const Blog = () => (
+  <section className="py-24 bg-white">
+    <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
+        <motion.p variants={fadeIn} className="font-cursive text-4xl text-cream-700 mb-2 text-center lowercase">thoughts &amp;</motion.p>
+        <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif font-black uppercase tracking-widest mb-16 text-center">Articles</motion.h2>
+        <div className="grid md:grid-cols-3 gap-10">
+          {articles.map(({ title, summary, tag, date, href }, i) => (
+            <motion.a
+              key={i}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeIn}
+              whileHover={{ y: -6 }}
+              className="group block border border-cream-200 bg-cream-50 hover:bg-white hover:border-cream-500 hover:shadow-lg transition-all duration-300"
+            >
+              {/* Color bar */}
+              <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, #b0763f, #d39850)' }} />
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[9px] font-black tracking-[0.3em] uppercase px-3 py-1 bg-cream-100 border border-cream-300 text-cream-700">{tag}</span>
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-ink-900/40">{date}</span>
+                </div>
+                <h3 className="text-lg font-serif font-bold mb-4 text-ink-900 group-hover:text-cream-700 transition-colors leading-snug">{title}</h3>
+                <p className="text-sm font-light leading-relaxed text-ink-900/70 mb-6">{summary}</p>
+                <div className="flex items-center gap-2 text-cream-700 font-bold text-xs tracking-widest uppercase">
+                  <FileText size={12} /> Read More <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);
+
+/* ─────────────────────────────────────────
+   CONTACT / HIRE ME
+───────────────────────────────────────── */
+const Contact = () => (
+  <section id="contact" className="py-28 bg-cream-50 border-t border-cream-200">
+    <div className="max-w-5xl mx-auto px-6 md:px-12">
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
+        <motion.p variants={fadeIn} className="font-cursive text-4xl text-cream-700 mb-2 text-center lowercase">let's</motion.p>
+        <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif font-black uppercase tracking-widest mb-6 text-center">Work Together</motion.h2>
+        <motion.p variants={fadeIn} className="text-center text-base font-light text-ink-900/60 max-w-xl mx-auto mb-16">
+          I'm open to backend engineering roles, freelance projects, and AI/LLM integration opportunities. Let's build something great.
+        </motion.p>
+
+        {/* Contact cards */}
+        <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-6 mb-16">
+          {[
+            { icon: Mail, label: 'Email Me', value: 'shivadwivedi7651@gmail.com', href: 'mailto:shivadwivedi7651@gmail.com' },
+            { icon: FaLinkedin, label: 'LinkedIn', value: 'linkedin.com/in/nitin8467', href: 'https://linkedin.com/in/nitin8467' },
+            { icon: FaGithub, label: 'GitHub', value: 'github.com/Nitin7651', href: 'https://github.com/Nitin7651' },
+          ].map(({ icon: Icon, label, value, href }) => (
+            <motion.a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeIn}
+              whileHover={{ y: -4 }}
+              className="group flex flex-col items-center gap-4 p-8 bg-white border border-cream-200 hover:border-cream-500 hover:shadow-lg transition-all duration-300 text-center"
+            >
+              <div className="w-14 h-14 flex items-center justify-center border border-cream-300 bg-cream-50 group-hover:bg-cream-700 group-hover:border-cream-700 transition-all duration-300">
+                <Icon size={24} className="text-cream-700 group-hover:text-white transition-colors duration-300" />
+              </div>
+              <div>
+                <p className="font-bold uppercase tracking-wider text-sm text-ink-900 mb-1">{label}</p>
+                <p className="text-xs font-light text-ink-900/50 break-all">{value}</p>
+              </div>
+              <ExternalLink size={14} className="text-cream-400 group-hover:text-cream-700 transition-colors" />
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Big CTA */}
+        <motion.div variants={fadeIn} className="text-center">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase text-ink-900/40 mb-6">or drop me a direct message</p>
+          <a
+            href="mailto:shivadwivedi7651@gmail.com"
+            className="inline-flex items-center gap-3 px-10 py-5 text-sm font-bold tracking-[0.2em] uppercase text-white hover:opacity-90 transition-opacity duration-300 shadow-lg"
+            style={{ background: 'linear-gradient(135deg, #b0763f, #d39850)' }}
+          >
+            <Send size={16} /> Send Me an Email
+          </a>
+        </motion.div>
+      </motion.div>
+    </div>
+  </section>
+);
+
 const Footer = () => (
   <footer className="bg-ink-900 text-cream-50 py-12 text-center">
     <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col items-center">
@@ -408,9 +709,14 @@ function App() {
         <Hero />
         <AboutStats />
         <VisionSkills />
+        <TechStack />
         <Experience />
         <Projects />
+        <Services />
+        <Testimonials />
+        <Blog />
         <Education />
+        <Contact />
       </main>
       <Footer />
     </div>
